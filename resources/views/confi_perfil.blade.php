@@ -90,7 +90,7 @@
             </button>
             <ul class="dropdown-menu dropdown-menu-dark">
                 <li><a class="dropdown-item " href="{{ route('home') }}">Perfil</a></li>
-                <li><a class="dropdown-item" href="#">aaaInicio</a></li>
+                <li><a class="dropdown-item" href="#">Inicio</a></li>
                 <li><a class="dropdown-item" href="#">Citas</a></li>
                 <li><a class="dropdown-item" href="#">Cartilla</a></li>
                 <li><a class="dropdown-item" href="#">Receta médica</a></li>
