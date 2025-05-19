@@ -28,4 +28,5 @@ class Mascota extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
 }

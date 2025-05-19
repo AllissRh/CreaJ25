@@ -207,13 +207,12 @@
   <section class="container text-center mb-5">
     <img src="{{ asset('assets/peludito.jpg') }}" alt="Perro disfrazado" class="img-fluid rounded mb-3" style="max-width: 400px;">
     <h3 class="text-primary">Visión</h3>
-    <p class="text-muted"  >Convertirnos en una plataforma esencial en el cuidado y la gestión de la salud animal, reconocida por facilitar la conexión entre veterinarios y dueños de mascotas a través de soluciones tecnológicas prácticas, seguras y accesibles. En VitalVet, aspiramos a mejorar continuamente la experiencia de atención veterinaria, promoviendo el bienestar de las mascotas y fortaleciendo su relación con las familias.</p>
-    <img src="{{ asset('assets/conejo.jpg') }}" alt="Conejo" class="img-fluid rounded mt-3" style="max-width: 400px;">
+    <p class="text-muted"  ><img src="{{ asset('assets/conejo.jpg') }}" alt="Conejo" class="img-fluid rounded mt-3" style="max-width: 400px;">
   </section>
 
   <!-- TABLA VACUNAS -->
   <section class="container mb-5">
-    <h4 class="text-primary mb-3">Calendario de Vacunación</h4>
+    <h4 class="text-primary mb-3">Calendario de Vacu</h4>
     <table class="table table-bordered table-striped text-center">
       <thead>
         <tr>

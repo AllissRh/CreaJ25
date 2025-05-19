@@ -17,5 +17,8 @@ class PerfilController extends Controller
 
         // Retornar la vista y pasarle las mascotas
         return view('perfil', compact('mascotas'));
+        
+
     }
+    
 }

@@ -195,7 +195,8 @@
                     <label class="perfil-label">DUI:</label>
                 </div>
                 <div class="col-md-9">
-                    <input type="text" class="perfil-input form-control" value="{{ Auth::user()->dui }}" disabled>
+                    <input type="text" class="perfil-input form-control" value="{{ Auth::user()->dui }}" readonly>
+                    <input type="hidden" name="dui" value="{{ Auth::user()->dui }}">
                 </div>
             </div>
         </div>

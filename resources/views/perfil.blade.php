@@ -226,27 +226,7 @@
     </div>
   </div>
   
-          <!-- Mascotas Registradas -->
-          <div id="plantillaMascota" style="display: none;">
-            <div class="card mb-3 shadow-sm rounded">
-              <div class="row g-0">
-                <div class="col-md-3 d-flex align-items-center justify-content-center p-2" style="background-color: #e3f2fd;">
-                  <img src="https://via.placeholder.com/100x100?text=Mascota" alt="Mascota" class="img-fluid rounded-circle shadow">
-                </div>
-                <div class="col-md-9">
-                  <div class="card-body">
-                    <h5 class="card-title mb-1"><strong>Nombre:</strong> <span class="text-muted mascota-nombre"></span></h5>
-                    <p class="card-text mb-1"><strong>ID:</strong> <span class="text-muted">Auto-generado</span></p>
-                    <p class="card-text"><strong>Especie:</strong> <span class="text-muted mascota-especie">________</span></p>
-                    <div class="text-end">
-                      <a href="{{ route('perfilPet') }}" class="btn btn-outline-primary  btn-sm me-2">Ver más</a>
-                      <button class="btn btn-outline-secondary btn-sm">Editar</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          
           
              <!-- Bootstrap JS -->
               <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
@@ -276,7 +256,10 @@
                                     <p class="card-text mb-1"><strong>ID:</strong> <span class="text-muted">{{ $mascota->id }}</span></p>
                                     <p class="card-text"><strong>Especie:</strong> <span class="text-muted">{{ $mascota->especie }}</span></p>
                                     <div class="text-end">
-                                      <a href="#" class="btn btn-outline-primary btn-sm me-2">Ver más</a>
+                                      
+                                      
+                                      <a href="{{ route('perfilPet', ['id' => $mascota->id]) }}" class="btn btn-outline-primary  btn-sm me-2">Ver más</a>
+                      
 
                                       <a href="#" class="btn btn-outline-secondary btn-sm">Editar</a>
                                     </div>

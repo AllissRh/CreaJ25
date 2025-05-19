@@ -55,6 +55,7 @@ class UserController extends Controller
     ]);
 
     return redirect()->back()->with('success', 'Perfil actualizado correctamente.');
+    //dd($request->all());
 }
 
 // esto es la modifiiiii
@@ -71,26 +72,5 @@ public function perfil()
 
 }
 
-// En el modelo User (app/Models/User.php)
-namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class User extends Authenticatable
-{
-    use HasFactory, Notifiable;
-
-    // Definir la relación con el modelo Mascota
-    public function mascotas(): HasMany
-    {
-        return $this->hasMany(Mascota::class);  // Un usuario tiene muchas mascotas
-        
-
-    }
-    
-    
-}
-dd($request->all());

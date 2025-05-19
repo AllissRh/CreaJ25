@@ -1,5 +1,5 @@
 <?php
-
+// app/Models/User.php
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -7,13 +7,20 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = [
-        'name', 'email', 'password', 'phone', 'address', 'dui', 'photo',
+        'name',
+        'email',
+        'password',
+        'phone',
+        'address',
+        'photo',
     ];
 
     protected $hidden = [
@@ -25,11 +32,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // Relación con mascotas
-    public function mascotas()
+    public function mascotas(): HasMany
     {
         return $this->hasMany(Mascota::class);
     }
+    
 }
-
-
