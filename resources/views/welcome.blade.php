@@ -178,30 +178,151 @@
     </head>
     <body class="antialiased">
        
-                <!-- Navbar -->
-        <nav class="navbar navbar-dark fixed-top">
-            <div class="container-fluid d-flex justify-content-between align-items-center">
+<!-- Navbar -->
+<nav class="navbar navbar-dark fixed-top">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
 
+        <a class="navbar-brand mx-auto" href="#">
+            <img src="{{ asset('assets/logo-blanco.png') }}" alt="Vital Vet" class="logo">
+        </a>
+        <div class="dropdown">
+    <a href="#" class="d-flex align-items-center text-white text-decoration-none " 
+       id="translateDropdown" 
+       data-bs-toggle="dropdown" 
+       aria-expanded="false">
+        <i class="bi bi-translate me-2"></i>
+        
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="translateDropdown " >
+        <li>
+            <h6 class="dropdown-header">
+                <i class="fas fa-language me-2"></i>Seleccionar Idioma
+            </h6>
+        </li>
+        <li><hr class="dropdown-divider"></li>
+        
+        <li>
+            <div class="dropdown-item-text " style="border: none">
+                <div id="google_translate_element" ></div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+    <!-- Estilos CSS -->
+    <style>
+
+        .dropdown-item {
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f8f9fa;
+            color: #495057;
+            transform: translateX(5px);
+        }
+
+        .flag-icon {
+            width: 20px;
+            height: 15px;
+            background-size: cover;
+            display: inline-block;
+            border-radius: 2px;
+        }
+
+        .VIpgJd-ZVi9od-ORHb-OEVmcd {
+            z-index: auto !important; /* hace que no aparezca labarra blanca */
+        }
+        .goog-te-gadget-simple {
+            background-color: #ffffff1f;
+            border-left: none;
+            border-top: none;
+            border-bottom: none;
+            border-right:none;
+            font-size: 10pt;
+            display: inline-block;
+            padding-top: 1px;
+            padding-bottom: 2px;
+            cursor: pointer;
+        }
+
+        .dropdown-item-text {
+            display: block;
+            padding: var(--bs-dropdown-item-padding-y) var(--bs-dropdown-item-padding-x);
+            color: var(--bs-dropdown-link-color);
+            margin-left: 25px;
             
+        }
 
-            <!-- Logo centrado -->
-            <a class="navbar-brand mx-auto" href="#">
-                <img src="{{ asset('assets/logo-blanco.png') }}" alt="Vital Vet" class="logo">
-            </a>
 
-            <!-- Menú de usuario -->
-            <div class="dropdown">
+
+    </style>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Inicializar Google Translate
+            function googleTranslateElementInit() {
+                new window.google.translate.TranslateElement(
+                    {
+                        pageLanguage: 'es', // idioma base
+                        includedLanguages: 'es,en,fr',
+                        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                        autoDisplay: false,
+                        multilanguagePage: true
+                    },
+                    "google_translate_element"
+                );
+            }
+
+            // Cargar script de Google Translate
+            const addScript = document.createElement("script");
+            addScript.setAttribute(
+                "src",
+                "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+            );
+            document.body.appendChild(addScript);
+            
+            // Hacer la función global
+            window.googleTranslateElementInit = googleTranslateElementInit;
+        });
+
+        // Función para traducir a idiomas específicos
+        function translatePage(language) {
+            const selectField = document.querySelector("select.goog-te-combo");
+            if (selectField) {
+                selectField.value = language;
+                selectField.dispatchEvent(new Event('change'));
+            } else {
+                // Si no está cargado aún, esperar un momento e intentar de nuevo
+                setTimeout(() => translatePage(language), 500);
+            }
+            
+            // Cerrar el dropdown
+            const dropdown = bootstrap.Dropdown.getInstance(document.getElementById('translateDropdown'));
+            if (dropdown) {
+                dropdown.hide();
+            }
+        }
+
+     
+
+        // Función para restaurar idioma original
+        function resetLanguage() {
+            translatePage('es'); // Cambiar 'es' por tu idioma base
+        }
+    </script>
+        <div class="dropdown">
                 <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bi bi-person fs-4 me-2"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" aria-labelledby="userDropdown">
                 <li><a class="dropdown-item" href="{{ route('login') }}">Inicio Sesión</a></li>
-                <li><a class="dropdown-item" href="{{ route('register') }}">Registrarse</a></li>
                 
                 </ul>
             </div>
-            </div>
-        </nav>
+</nav>
 
         <!-- Contenido principal -->
         <center><div class="container mt-4">
@@ -209,8 +330,8 @@
         </div></center>
         </header>
 
-        <div class="hero">
-            <p>Servicios Médicos Veterinarios<br>Especializados Para Tus Mascotas.</p>
+        <div class="hero" >
+            <p style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 35px">Servicios Médicos Veterinarios<br>Especializados Para Tus Mascotas.</p>
         </div>
 
         <section class="gallery">

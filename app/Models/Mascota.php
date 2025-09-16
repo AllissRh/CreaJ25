@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Mascota extends Model
 {
-    use HasFactory;
+    protected $table = 'mascotas'; 
 
     protected $fillable = [
         'nombre',
@@ -21,12 +21,24 @@ class Mascota extends Model
         'alergias',
         'imagen',
         'user_id',
+        'est_reproductivo',
     ];
 
-    // Relación: una mascota pertenece a un usuario
+    // Relación con usuario
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
-    
+
+    public function vacunaciones()
+    {
+        return $this->hasMany(Vacunacion::class, 'id_mascota_3'); 
+    }
+
+    public function desparasitaciones()
+    {
+        return $this->hasMany(Desparasitacion::class, 'mascota_id'); 
+    }
+
+
 }

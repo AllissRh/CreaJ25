@@ -30,7 +30,22 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    //para tipo usuario
+    protected function redirectTo()
+    {
+        $tipo = auth()->user()->tipo_usuario;
+
+        if ($tipo == 1) {
+            return '/perfil';
+        } elseif ($tipo == 2) {
+            return '/admin';
+        } elseif ($tipo == 3) {
+            return '/docVista';
+        }
+
+        return '/home'; 
+    }
+
 
     /**
      * Create a new controller instance.
@@ -58,7 +73,7 @@ class RegisterController extends Controller
         'phone' => ['required', 'regex:/^[67]\d{7}$/'],
         'address' => ['required', 'string', 'max:255'],
         'dui' => ['required', 'regex:/^\d{8}-\d{1}$/'],
-    ], [/*Verifica si una entrada de usuario cumple con el formato especifico como telefono*/
+    ], [
         'phone.regex' => 'El número de teléfono debe tener 8 dígitos y comenzar con 6 o 7.',
         'dui.regex' => 'El DUI debe tener el formato 12345678-9.',
     ]);
@@ -67,7 +82,7 @@ class RegisterController extends Controller
 
 
     /**
-     * Create a new user instance after a valid registration.
+     * 
      *
      * @param  array  $data
      * @return \App\Models\User
@@ -90,6 +105,7 @@ class RegisterController extends Controller
              'address' => $data['address'] ?? null,
              'dui' => $data['dui'] ?? null,
              'photo' => $photoPath,
+             'tipo_usuario' => 1, 
          ]);
      }
      

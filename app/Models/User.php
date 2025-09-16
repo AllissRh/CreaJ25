@@ -7,10 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
-
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -21,6 +19,12 @@ class User extends Authenticatable
         'phone',
         'address',
         'photo',
+        'dui',
+        'tipo_usuario',
+        'profile_photo',
+        'fecha_nacimiento',
+        'fecha_nacimiento_edad',
+        'verification_code'
     ];
 
     protected $hidden = [
@@ -32,9 +36,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function mascotas(): HasMany
+    public function mascotas()
     {
-        return $this->hasMany(Mascota::class);
+        return $this->hasMany(Mascota::class, 'user_id');
     }
-    
+
 }

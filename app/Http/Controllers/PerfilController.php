@@ -13,7 +13,7 @@ class PerfilController extends Controller
     public function index()
     {
         // Obtener las mascotas del usuario autenticado
-        $mascotas = Auth::user()->mascotas;  // Asumiendo que tienes una relación llamada 'mascotas' en el modelo User
+        $mascotas = Auth::user()->mascotas;  
 
         // Retornar la vista y pasarle las mascotas
         return view('perfil', compact('mascotas'));

@@ -53,6 +53,8 @@
                     </div>
                     
                     <br><br>
+
+
                     <div class="form-outline mb-4">
                         <label class="form-label" for="email">Nombre:</label>
                         <input type="text" name="name" id="name" class="form-control form-control-lg" placeholder="Ingrese su nombre completo"/>
